@@ -26,15 +26,38 @@ export const App: React.FC = () => {
   const [isCreateEventModalOpen, setIsCreateEventModalOpen] = useState(false);
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
-  // Authenticated User State
-  const [currentUser, setCurrentUser] = useState<User>({
-    id: 'usr-1',
-    name: 'Aditya Kumar',
-    email: 'akpinterestbus@gmail.com',
-    organization: 'Vanguard Events & Media',
-    role: 'organizer',
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
+  // Authenticated User State with localStorage persistence
+  const [currentUser, setCurrentUser] = useState<User>(() => {
+    try {
+      const saved = localStorage.getItem('eventiq_user_profile');
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (e) {
+      // ignore
+    }
+    return {
+      id: 'usr-1',
+      name: 'Event Director',
+      email: 'organizer@eventiq.app',
+      organization: 'EventIQ Productions',
+      role: 'organizer',
+      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
+    };
   });
+
+  const handleUpdateUser = (updatedUser: User) => {
+    setCurrentUser(updatedUser);
+    try {
+      localStorage.setItem('eventiq_user_profile', JSON.stringify(updatedUser));
+    } catch (e) {
+      // ignore
+    }
+    setNotification({
+      type: 'success',
+      message: `Profile updated: ${updatedUser.name} (${updatedUser.organization})`,
+    });
+  };
 
   // Connected Instagram State
   const [instagramAccount, setInstagramAccount] = useState<ConnectedInstagramAccount>({
@@ -168,6 +191,8 @@ export const App: React.FC = () => {
         instagramAccount={instagramAccount}
         onOpenInstagramModal={() => setIsInstagramModalOpen(true)}
         user={currentUser}
+        onUpdateUser={handleUpdateUser}
+        onOpenSettings={() => setActiveTab('settings')}
       />
 
       {/* Navigation Bar */}
@@ -349,7 +374,7 @@ export const App: React.FC = () => {
             {activeTab === 'settings' && (
               <SettingsView
                 user={currentUser}
-                onUpdateUser={setCurrentUser}
+                onUpdateUser={handleUpdateUser}
                 instagramAccount={instagramAccount}
                 onOpenInstagramModal={() => setIsInstagramModalOpen(true)}
               />

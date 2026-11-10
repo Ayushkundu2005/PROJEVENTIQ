@@ -30,6 +30,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   const [formData, setFormData] = useState<User>(user);
   const [savedSuccess, setSavedSuccess] = useState(false);
 
+  React.useEffect(() => {
+    setFormData(user);
+  }, [user]);
+
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     onUpdateUser(formData);

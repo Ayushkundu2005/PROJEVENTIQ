@@ -295,9 +295,9 @@ app.get('/api/auth/me', (req: Request, res: Response) => {
   res.json({
     user: {
       id: 'usr-1',
-      name: 'Aditya Kumar',
-      email: 'akpinterestbus@gmail.com',
-      organization: 'Vanguard Events & Media',
+      name: 'Event Director',
+      email: 'director@eventiq.app',
+      organization: 'EventIQ Productions',
       role: 'organizer',
       avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
     },
@@ -305,14 +305,14 @@ app.get('/api/auth/me', (req: Request, res: Response) => {
 });
 
 app.post('/api/auth/login', (req: Request, res: Response) => {
-  const { email } = req.body;
+  const { email, name, organization } = req.body;
   res.json({
     success: true,
     user: {
       id: 'usr-1',
-      name: 'Aditya Kumar',
-      email: email || 'akpinterestbus@gmail.com',
-      organization: 'Vanguard Events & Media',
+      name: name || 'Event Director',
+      email: email || 'director@eventiq.app',
+      organization: organization || 'EventIQ Productions',
       role: 'organizer',
     },
   });
