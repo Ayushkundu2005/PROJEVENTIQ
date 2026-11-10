@@ -1,0 +1,886 @@
+# PROJECT: EventIQ
+## AI-Powered Event Marketing, Content Generation & Management Platform
+
+You are an expert full-stack software engineer, AI product architect, UI/UX designer, and SaaS developer.
+
+I want you to build a complete, functional, production-oriented web application named **EventIQ**, from scratch.
+
+I have attached the original Eventiq.pdf project document. Read and understand the entire document before beginning development. Treat it as the primary reference for the project's vision, features, workflows, and functionality.
+
+The following instructions expand the original project with one additional major feature: genuine Instagram account connection through Meta OAuth.
+
+IMPORTANT BRANDING INSTRUCTIONS:
+- The product name must always be written as "EventIQ".
+- Do not use any hackathon names, team names, institute names, or member names.
+- Do not include "Coding Janata Party", "Genesis Snap", or similar references anywhere.
+- Do not call the product "India's First SEO Matrix", "First Indian SEO Matrix", or make unsupported superiority claims.
+- Do not add unnecessary promotional slogans or fabricated statistics.
+- Present EventIQ as an independent, professional SaaS product.
+- Use realistic sample data only where necessary, clearly identifying it as demonstration data.
+
+---
+
+# 1. PRODUCT VISION
+
+EventIQ is an AI-powered event marketing and management platform designed to help event organizers, promoters, entertainment companies, and marketing teams manage their entire promotional ecosystem from one unified workspace.
+
+The platform should eliminate fragmented workflows involving:
+- Social media marketing.
+- Content creation.
+- Graphic design.
+- SEO and keyword research.
+- Campaign planning.
+- Email marketing.
+- SMS marketing.
+- Press releases.
+- Audience engagement.
+- Event information management.
+- Campaign performance analysis.
+
+The central concept:
+
+**One event brief → AI-generated campaign → Multi-platform content → Coordinated marketing → Performance analysis.**
+
+An organizer should be able to enter event details once and use that information throughout the entire EventIQ ecosystem.
+
+The application must feel like a real commercial SaaS product rather than a static college project.
+
+# 2. TECHNOLOGY STACK
+
+Use a modern, maintainable architecture.
+
+Frontend:
+- React 18 or a compatible current React version.
+- TypeScript.
+- Tailwind CSS.
+- Vite.
+- Lucide icons.
+- Responsive component-based architecture.
+- Canvas/SVG rendering for creative design tools.
+
+Backend:
+- Node.js.
+- Express.js.
+- TypeScript.
+- REST APIs.
+- Modular service architecture.
+
+AI:
+- Google Gemini API using a currently supported Gemini model.
+- AI-powered content generation.
+- Event-context-aware responses.
+- SEO and keyword analysis.
+- Marketing recommendations.
+- AI attendee concierge.
+- Structured output generation.
+
+Database:
+- PostgreSQL with a suitable ORM such as Prisma.
+- Persistent storage for users, events, campaigns, generated content, connected accounts, settings, and analytics.
+- Secure session and authentication management.
+
+Deployment:
+- Vercel for the production frontend and compatible backend functions.
+- Use Vercel-compatible API routes or serverless functions where appropriate.
+- If a backend service requires separate hosting, clearly explain the requirement and integrate it securely with the Vercel frontend.
+- Use environment variables for all API credentials.
+
+Do not hardcode API keys, secrets, passwords, or private tokens.
+
+Do not introduce unnecessary technologies merely for the sake of complexity.
+
+# 3. DESIGN SYSTEM AND USER INTERFACE
+
+Create a premium, minimal, elegant and sophisticated interface.
+
+The visual identity should communicate professionalism, creativity, clarity and reliability.
+
+Colour palette:
+- Warm white: #FAF9F6.
+- Off-white: #F4F2ED.
+- Soft grey: #E8E6E1.
+- Charcoal: #252525.
+- Muted taupe: #968A7C.
+- Restrained dark text and subtle borders.
+
+Avoid:
+- Excessive gradients.
+- Neon colours.
+- Vibrant rainbow colours.
+- Excessive shadows.
+- Unnecessary animations.
+- Cluttered layouts.
+- Oversized decorative elements.
+
+Typography:
+- Use an elegant serif font such as Cormorant Garamond or Playfair Display for selected headings.
+- Use a clean sans-serif font such as Inter for body text, labels, forms, and navigation.
+- Italic serif typography may be used for editorial-style headings.
+- Maintain excellent readability.
+- Avoid using decorative cursive fonts for body text.
+
+Layout:
+- Elegant top navigation.
+- Clean sidebar or horizontally scrollable module navigation.
+- Generous whitespace.
+- Consistent spacing and alignment.
+- Subtle hover effects.
+- Rounded corners used sparingly.
+- Consistent buttons, forms, cards, modals and tables.
+- Fully responsive desktop, tablet and mobile layouts.
+
+The interface should resemble a polished modern SaaS application.
+
+Use a consistent design system throughout all modules.
+
+# 4. AUTHENTICATION AND USER MANAGEMENT
+
+Build a proper authentication system.
+
+Required:
+- User registration.
+- Email and password login.
+- Google Sign-In if supported by the configured Google authentication provider.
+- Secure logout.
+- Forgot password.
+- Password reset.
+- Protected application routes.
+- User profile and account settings.
+- Persistent user sessions.
+- Appropriate authorization checks.
+
+Users should have separate workspaces and should not be able to access other users' private event information.
+
+## NEW FEATURE: INSTAGRAM ACCOUNT CONNECTION
+
+Add a prominent button in the main navigation:
+
+**Connect Instagram**
+
+The button should initiate a genuine Instagram OAuth authorization flow.
+
+Required functionality:
+
+1. User clicks Connect Instagram.
+2. Redirect the user to Meta's official Instagram authorization page.
+3. User logs in to their own eligible Instagram account.
+4. User reviews and grants the requested permissions.
+5. Meta redirects the user to the registered callback URL.
+6. Backend securely exchanges the authorization code for an access token.
+7. Store the account connection and tokens securely.
+8. Display the connected Instagram username and connection status inside EventIQ.
+9. Allow users to disconnect their account.
+10. Handle expired tokens, permission errors, denied access and reconnection.
+
+Use Meta's currently supported Instagram API with Instagram Login.
+
+Important:
+- Support eligible Instagram Business and Creator accounts.
+- Do not pretend that ordinary personal accounts have API capabilities they do not have.
+- Request only permissions necessary for the features being implemented.
+- Implement OAuth state validation, secure callback handling and token protection.
+- Never expose the App Secret or access tokens in frontend code.
+- Do not use sample Instagram users as real connected accounts.
+- Do not simulate successful authentication.
+- Do not scrape Instagram or use unofficial login methods.
+- Clearly display which features require additional Meta permissions or app review.
+
+Instagram features should include, where permitted:
+- Account connection.
+- Account information.
+- Supported media publishing.
+- Publishing status.
+- Supported account insights.
+- Connected account management.
+
+For publishing, implement the official API workflow, including media-container creation, publishing and status handling where required.
+
+If Meta credentials are unavailable, show a clearly labelled configuration state explaining what is missing. Keep the rest of EventIQ usable.
+
+# 5. EXECUTIVE HUB
+
+Create the main dashboard that acts as the command centre of EventIQ.
+
+Display:
+- Total events.
+- Active campaigns.
+- Generated creative assets.
+- Connected social accounts.
+- Campaign performance.
+- Engagement metrics.
+- Reach and impressions when actual data is available.
+- Upcoming campaign activities.
+- Recent generated content.
+- Marketing recommendations.
+- Event readiness overview.
+
+Include:
+- Event selector.
+- Create new event button.
+- Event overview.
+- Campaign status.
+- Recent activities.
+- Performance charts.
+- Quick-access buttons to major modules.
+
+Allow users to create, edit, duplicate and delete events.
+
+All dashboard metrics must be calculated from real stored data or clearly labelled demonstration data. Never display invented live analytics as actual results.
+
+# 6. EVENT CREATION AND MANAGEMENT
+
+Build a comprehensive event creation workflow.
+
+Event details should include:
+- Event name.
+- Event category.
+- Event description.
+- Event location.
+- Venue.
+- Event start and end dates.
+- Event schedule.
+- Target audience.
+- Target age group, where relevant.
+- Event genre.
+- Ticket categories.
+- Ticket pricing in INR.
+- VIP pricing.
+- Booking URL.
+- Presale details.
+- Promotional objectives.
+- Brand identity.
+- Preferred language.
+- Social media links.
+
+Allow users to edit event information later.
+
+The event information must become the central source of context for all AI-generated content.
+
+# 7. POST & CREATIVE STUDIO
+
+Build a functional creative generation studio.
+
+It must support five creative formats:
+
+1. Instagram and social media posts.
+2. Stories and vertical promotional creatives.
+3. Posters.
+4. Banners.
+5. VIP passes.
+
+Provide eight distinct aesthetic themes.
+
+Suggested themes:
+- Editorial Swiss.
+- Minimal Monochrome.
+- Neon Underground.
+- Luxury Black & Gold.
+- Warm Contemporary.
+- Retro Futuristic.
+- Elegant Classical.
+- Festival Energy.
+
+Each theme should have its own visual identity, typography, spacing and composition.
+
+Required features:
+- Select event.
+- Select format.
+- Select theme.
+- Generate design.
+- Edit text.
+- Change colours.
+- Upload event images and logos.
+- Resize and reposition elements.
+- Preview the design.
+- Download/export generated artwork.
+- Save generated assets.
+- Regenerate variations.
+
+Use Canvas/SVG rendering or another suitable design-rendering approach.
+
+Integrate image generation through an available image-generation API where configured.
+
+Do not substitute unrelated stock images for generated event-specific creatives.
+
+All export formats should have appropriate aspect ratios and dimensions.
+
+# 8. SOCIAL CONTENT ENGINE
+
+Build an AI-powered social content generation module.
+
+Supported platforms:
+- Instagram.
+- TikTok.
+- YouTube Shorts.
+- Facebook.
+
+Generate:
+- Instagram captions.
+- Carousel copy.
+- Reel hooks.
+- Short-form video scripts.
+- TikTok content ideas.
+- YouTube Shorts descriptions.
+- Hashtag suggestions.
+- Calls to action.
+- Platform-specific promotional copy.
+
+The AI should consider:
+- Event genre.
+- Target audience.
+- Event location.
+- Ticket price.
+- Campaign phase.
+- Marketing objective.
+- Platform-specific content requirements.
+
+Include a content calendar and asset management system.
+
+Allow users to:
+- Edit generated content.
+- Save drafts.
+- Organize content.
+- Schedule posts.
+- Publish through supported official integrations.
+- Export content for manual publishing when direct publishing is unavailable.
+
+Do not claim that content has been published unless the platform API confirms successful publishing.
+
+# 9. VIRAL MATRIX / SOCIAL CAMPAIGN PLANNER
+
+Create an advanced social marketing planning module.
+
+Features:
+- Campaign concept generation.
+- Audience segmentation.
+- Content hooks.
+- Viral content angles.
+- Hashtag matrices.
+- Content variation testing.
+- Platform-specific strategies.
+- Influencer collaboration ideas.
+- Posting calendar.
+- Engagement recommendations.
+
+Include a structured content matrix with:
+- Content type.
+- Target audience.
+- Platform.
+- Campaign phase.
+- Hook.
+- Caption.
+- CTA.
+- Publishing status.
+
+AI should generate recommendations based on the selected event rather than generic templates.
+
+# 10. SEO & SERP INTELLIGENCE
+
+Build a dedicated SEO and search intelligence module.
+
+Features:
+- Keyword research.
+- Primary and secondary keyword identification.
+- Search intent analysis.
+- Keyword clustering.
+- Keyword mapping.
+- Location-based SEO.
+- Competitor keyword comparison where reliable data is available.
+- Search result preview simulator.
+- Meta title generation.
+- Meta description generation.
+- Heading structure suggestions.
+- Content optimization recommendations.
+- FAQ generation.
+- Google Answer Box-style content suggestions.
+- Local SEO recommendations.
+
+Support event-specific keywords and local searches.
+
+Include:
+- Search volume when available from a legitimate data provider.
+- Keyword difficulty when available.
+- Search intent.
+- Ranking opportunity.
+- Suggested content.
+- Target location.
+
+Never fabricate search volume, keyword difficulty or live SERP rankings.
+
+If external SEO APIs are not configured, clearly identify generated keyword suggestions as AI estimates rather than verified search data.
+
+# 11. AI CONCIERGE & KNOWLEDGE HUB
+
+Build an AI-powered attendee support assistant.
+
+This is an important feature of EventIQ.
+
+Event organizers should be able to upload:
+- PDF files.
+- Event schedules.
+- Venue information.
+- Bag policies.
+- Entry rules.
+- Parking information.
+- Ticket policies.
+- Refund policies.
+- FAQs.
+- Other event documents.
+
+Also allow manual text entry.
+
+The system should:
+1. Ingest uploaded documents.
+2. Extract relevant information.
+3. Organize information into a searchable knowledge base.
+4. Retrieve relevant information when a user asks a question.
+5. Generate context-aware answers.
+6. Provide source citations or references.
+7. Show confidence indicators.
+8. Clearly indicate when the knowledge base does not contain an answer.
+
+Example questions:
+- What is the bag policy?
+- When does the main artist perform?
+- Is parking available?
+- Can attendees re-enter after leaving?
+- What is the refund policy?
+- Where is the VIP entrance?
+
+Support multilingual conversations:
+- English.
+- Hindi.
+- Tamil.
+- Telugu.
+
+Design the concierge so that it can eventually be embedded into an event website.
+
+Do not invent event policies or schedules. If the information is missing, tell the attendee to contact the organizer.
+
+# 12. DIRECT MARKETING & SCHEMA
+
+Build a unified direct marketing module.
+
+## A. Email Marketing
+
+Generate three-phase email drip sequences.
+
+Phase 1: Event announcement and presale.
+- Announcement email.
+- Presale code.
+- Early-bird promotions.
+- Awareness messaging.
+
+Phase 2: Price surge.
+- Ticket price updates.
+- Countdown messaging.
+- Limited inventory alerts.
+- Urgency-focused communication.
+
+Phase 3: Day-of logistics.
+- Venue information.
+- Event timings.
+- Entry gates.
+- Parking instructions.
+- Final reminders.
+
+Support customer lifecycle segmentation:
+- First-time attendees.
+- VIP customers.
+- Returning customers.
+- Inactive or lapsed customers.
+
+Allow users to edit, preview, save and schedule emails.
+
+Integrate a legitimate email delivery provider when credentials are available.
+
+## B. SMS Marketing
+
+Features:
+- SMS campaign generation.
+- Event reminders.
+- Ticket urgency notifications.
+- Day-of logistics alerts.
+- Scheduled delivery.
+- Delivery status where supported.
+
+Include appropriate user consent, unsubscribe and regulatory compliance mechanisms.
+
+Never send unsolicited messages.
+
+## C. Press Releases
+
+Generate professional press releases in a journalistic/AP-style format.
+
+Include:
+- Headline.
+- Subheadline.
+- Event overview.
+- Important details.
+- Venue and date.
+- Organizer information.
+- Quotes clearly marked for approval.
+- Media contact details.
+
+Allow editing and export.
+
+Do not invent quotes or falsely attribute statements to real people.
+
+## D. Google Event Schema
+
+Generate valid JSON-LD structured data using appropriate Schema.org event properties.
+
+Include:
+- Event name.
+- Description.
+- Start and end date.
+- Location.
+- Organizer.
+- Offers.
+- Ticket prices.
+- Availability where known.
+- Event URL.
+
+Support INR pricing and Indian Standard Time.
+
+Validate the generated JSON-LD and allow users to copy or download it.
+
+## E. Conversion Tracking
+
+Build a campaign tracking dashboard.
+
+Track where reliable event data is available:
+- Campaign clicks.
+- Link visits.
+- Leads.
+- Ticket conversions.
+- Conversion rates.
+- Channel performance.
+
+Use UTM tracking and configurable campaign attribution.
+
+Do not claim to know ticket purchases unless connected to a legitimate ticketing or conversion data source.
+
+# 13. UNIFIED FIVE-PHASE CAMPAIGN ROADMAP
+
+Create a master campaign timeline.
+
+All marketing channels should follow one coordinated five-phase strategy.
+
+Phase 1: Awareness
+- Event announcement.
+- Teaser creatives.
+- Social content.
+- SEO content.
+- Press release.
+
+Phase 2: Presale
+- Early access campaigns.
+- Presale announcements.
+- Email and SMS sequences.
+- Social promotions.
+
+Phase 3: Price Surge
+- Ticket urgency campaigns.
+- Countdown creatives.
+- Price-change announcements.
+- Retargeting suggestions.
+
+Phase 4: Day-Of
+- Event reminders.
+- Venue details.
+- Entry information.
+- Artist schedules.
+- Parking and logistics.
+- Attendee concierge.
+
+Phase 5: Post-Event
+- Thank-you messages.
+- Photo and video recap.
+- Feedback collection.
+- Audience retention.
+- Future event promotions.
+
+Create:
+- Calendar view.
+- Timeline view.
+- Campaign progress indicators.
+- Task management.
+- Scheduling.
+- Status tracking.
+- Channel synchronization.
+
+Users must be able to edit campaign schedules and customize each phase.
+
+# 14. ANALYTICS AND A/B TESTING
+
+Build a performance analytics module.
+
+Include:
+- Campaign performance.
+- Reach and impressions.
+- Engagement rate.
+- Click-through rate.
+- Conversion rate.
+- Email performance.
+- Social platform performance.
+- Creative asset comparisons.
+- Audience segmentation.
+- Campaign comparisons.
+
+Provide A/B testing functionality for:
+- Captions.
+- Headlines.
+- Creative variations.
+- CTAs.
+- Email subject lines.
+- Content hooks.
+
+Allow users to record and compare test results.
+
+AI can recommend improvements using available campaign data.
+
+Clearly distinguish actual measurements, predictions and AI-generated recommendations.
+
+# 15. INDIA-FIRST LOCALIZATION
+
+Design EventIQ with Indian event organizers in mind.
+
+Required:
+- Indian Rupee (₹) currency formatting.
+- IST timezone.
+- Indian venue and location formats.
+- Local SEO.
+- Regional audience targeting.
+- Hindi, Tamil and Telugu content generation.
+- Location-aware marketing suggestions.
+
+Keep localization built into the application architecture.
+
+# 16. APPLICATION NAVIGATION
+
+Use a clear, consistent navigation structure.
+
+Recommended main navigation:
+
+1. Executive Hub
+2. Event Management
+3. Post & Creative Studio
+4. Social Content Engine
+5. Viral Matrix
+6. SEO & SERP Intelligence
+7. AI Concierge & Knowledge Hub
+8. Direct Marketing & Schema
+9. Campaign Roadmap
+10. Analytics & A/B Testing
+11. Instagram Connections
+12. Settings
+
+Make all modules accessible and functional.
+
+Avoid unnecessary duplicate navigation items.
+
+# 17. DATABASE AND BACKEND REQUIREMENTS
+
+Implement proper persistent data storage.
+
+Create suitable models for:
+- Users.
+- User profiles.
+- Events.
+- Campaigns.
+- Campaign phases.
+- Creative assets.
+- Social content.
+- Connected social accounts.
+- OAuth credentials and token metadata.
+- Keywords.
+- Email campaigns.
+- SMS campaigns.
+- Press releases.
+- Knowledge documents.
+- Knowledge chunks.
+- Concierge conversations.
+- Analytics.
+- A/B experiments.
+- Scheduled tasks.
+
+Implement:
+- Input validation.
+- Error handling.
+- Secure authentication.
+- Authorization.
+- Rate limiting.
+- Logging.
+- File upload validation.
+- Secure API routes.
+- Database migrations.
+
+All user-specific records must be isolated correctly.
+
+# 18. SECURITY AND API INTEGRATIONS
+
+Use secure environment variables.
+
+Expected configuration variables may include:
+
+GEMINI_API_KEY
+DATABASE_URL
+AUTH_SECRET
+GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET
+INSTAGRAM_CLIENT_ID
+INSTAGRAM_CLIENT_SECRET
+INSTAGRAM_REDIRECT_URI
+EMAIL_PROVIDER_API_KEY
+SMS_PROVIDER_API_KEY
+
+Only implement variables for integrations actually used.
+
+For Instagram:
+- Use official Meta APIs.
+- Validate OAuth state.
+- Validate redirect URIs.
+- Securely exchange authorization codes.
+- Encrypt sensitive tokens at rest where supported.
+- Never expose secrets in client-side JavaScript.
+- Implement token expiration and reconnection handling.
+
+If credentials are missing, display clear setup instructions instead of crashing the application.
+
+Never create fake integrations or pretend that a third-party API is connected.
+
+# 19. USER EXPERIENCE AND FUNCTIONALITY REQUIREMENTS
+
+Every visible button must perform its intended action.
+
+Every form must validate inputs.
+
+Every navigation item must open the correct module.
+
+Every generated asset must be saved or downloadable where appropriate.
+
+Every campaign must be linked to the selected event.
+
+Every module should share the same event context.
+
+Provide:
+- Loading states.
+- Empty states.
+- Success notifications.
+- Error notifications.
+- Confirmation dialogs.
+- Responsive layouts.
+- Useful tooltips.
+- Clear API configuration warnings.
+
+Do not use non-functional buttons, placeholder interactions or fake success notifications.
+
+If a feature depends on an unavailable API, show a clearly labelled unavailable/configuration state and provide a usable alternative where possible.
+
+# 20. DEPLOYMENT REQUIREMENTS
+
+The final product must be deployed to Vercel.
+
+Follow this sequence:
+
+1. Complete the application architecture.
+2. Implement the frontend.
+3. Implement the backend.
+4. Configure database connectivity.
+5. Integrate the Gemini API.
+6. Implement authentication.
+7. Implement Instagram OAuth.
+8. Connect all application modules.
+9. Test all major user workflows.
+10. Run production builds.
+11. Resolve TypeScript errors.
+12. Resolve build errors.
+13. Resolve runtime errors.
+14. Configure production environment variables.
+15. Deploy to Vercel.
+16. Verify the public production URL.
+17. Test the deployed application.
+
+Do not consider the project finished merely because the AI Studio preview works.
+
+The production deployment must be tested independently.
+
+If the application requires an external database or backend service, explain and configure the necessary deployment dependencies.
+
+Do not expose secrets in source code or commit them to GitHub.
+
+# 21. TESTING AND ACCEPTANCE CRITERIA
+
+Before declaring the application complete, verify the following:
+
+- A user can register and log in.
+- A user can create and manage events.
+- Event information persists after refresh.
+- AI content generation works with the configured Gemini API.
+- Creative assets can be generated, edited and exported.
+- Social content can be generated and saved.
+- SEO tools produce useful results.
+- The AI concierge can answer from uploaded event documents with references.
+- Email and SMS workflows can be prepared.
+- JSON-LD schema generation works.
+- The five-phase campaign roadmap works.
+- Analytics display real available data.
+- Instagram OAuth can connect an eligible user's own account.
+- Instagram publishing follows the official supported API workflow.
+- Missing API credentials produce helpful warnings.
+- User data remains private.
+- All major pages work on desktop and mobile.
+- The production Vercel deployment loads successfully.
+
+# 22. DEVELOPMENT EXECUTION INSTRUCTIONS
+
+Build this project systematically.
+
+Do not try to create a superficial collection of screens in one pass.
+
+First, analyze the attached Eventiq.pdf and this entire specification.
+
+Then:
+
+Stage 1: Establish the complete architecture, data model and design system.
+
+Stage 2: Build authentication, event management and the Executive Hub.
+
+Stage 3: Build the Creative Studio and Social Content Engine.
+
+Stage 4: Build the Viral Matrix and SEO Intelligence.
+
+Stage 5: Build the AI Concierge and Knowledge Hub.
+
+Stage 6: Build Direct Marketing, Schema and the five-phase campaign roadmap.
+
+Stage 7: Build analytics and A/B testing.
+
+Stage 8: Implement genuine Instagram OAuth and account management.
+
+Stage 9: Integrate, test, secure and deploy.
+
+Maintain a clear record of completed features, pending features, configuration requirements and known limitations.
+
+Do not remove a previously working feature when implementing another module.
+
+Do not replace real functionality with static mockups to make the interface look complete.
+
+If a feature requires an external API credential, implement its integration properly and clearly identify the missing configuration.
+
+If you reach an output or execution limit, continue from the last completed stage without rebuilding or discarding working components.
+
+## FINAL PRODUCT EXPECTATION
+
+The final application must be called **EventIQ**.
+
+It must be an elegant, minimal, professional, AI-powered event marketing and management platform.
+
+It must preserve the original Eventiq.pdf vision, implement the additional genuine Instagram account connection feature, use a secure and maintainable architecture, and be deployed as a working application on Vercel.
+
+The priority is not the number of features displayed on screen.
+
+The priority is a cohesive product in which the features actually work together.
+
+Build EventIQ as a real product that can be demonstrated to teachers, tested by real users, and developed further into a commercial SaaS platform.

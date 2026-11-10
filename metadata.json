@@ -1,0 +1,6 @@
+{
+  "name": "EventIQ",
+  "description": "AI-Powered Event Marketing, Content Generation & Management Platform with Multi-Platform Workflows and Meta Instagram Integration",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
